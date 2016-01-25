@@ -1,0 +1,43 @@
+#	Config file for the linking with Eospac based  equation of state
+
+REQUIRES Multispecies/MultispeciesMain
+
+REQUESTS physics/Eos/EosMain/multiTemp/Gamma
+REQUESTS physics/Eos/EosMain/multiTemp/Gamma/Ye
+
+ SUGGEST physics/Eos/EosMain/Tabulated
+
+CONFLICTS physics/Eos/EosMain/multiTemp/Multigamma
+
+
+D eos_tolerance  tolerance for the Newton-Raphson iterations
+PARAMETER eos_tolerance REAL    1.e-8
+
+D eos_maxNewton  maximum number of Newton-Raphson iterations to try.
+PARAMETER eos_maxNewton INTEGER 50
+
+D eos_forceConstantInput Newton-Raphson loop in Eos can allow input EINT or PRES 
+D &              to change on output to preserve equilibrium.  This switch 
+D &              forces a constant input of EINT or PRES
+PARAMETER eos_forceConstantInput BOOLEAN false 
+
+PARAMETER eos_maxFactorUp   REAL 1.5848932
+PARAMETER eos_maxFactorDown REAL 0.6309573
+
+REQUESTS physics/Hydro/HydroMain/split/PPM/multiTemp
+
+
+D eospac_monotonic_in_x Enable forced monotonicity with respect to x
+PARAMETER eospac_monotonic_in_x  BOOLEAN   False
+
+D eospac_monotonic_in_y Enable forced monotonicity with respect to y
+PARAMETER eospac_monotonic_in_y  BOOLEAN  False
+
+D eospac_pt_smoothing  Perform all necessary data smoothing taken from SAGE
+PARAMETER eospac_pt_smoothing  BOOLEAN  False
+
+D eospac_smooth  ..
+PARAMETER eospac_smooth  BOOLEAN  False
+
+D eospac_crate_tzero  ..
+PARAMETER eospac_create_tzero  BOOLEAN  False
